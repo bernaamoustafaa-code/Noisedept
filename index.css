@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-arial-black {
+    font-family: "Arial Black", "Arial-BoldMT", "Gadget", Impact, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 900;
+  }
+  
+  .font-bickham {
+    font-family: "Bickham Script Pro", "Bickham Script", "Pinyon Script", "Alex Brush", "Great Vibes", cursive;
+    font-weight: 400;
+  }
+
+  .font-syne {
+    font-family: "Syne", sans-serif;
+  }
+
+  .font-sans-clean {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Silver glow effect specifically requested for Portfolio Bickham font */
+  .silver-glow {
+    text-shadow: 
+      0 0 1px rgba(255, 255, 255, 0.95),
+      0 0 6px rgba(240, 245, 255, 0.9),
+      0 0 14px rgba(220, 230, 245, 0.75),
+      0 0 28px rgba(195, 210, 235, 0.6),
+      0 0 45px rgba(180, 195, 220, 0.45),
+      0 0 65px rgba(255, 255, 255, 0.3);
+  }
+
+  .silver-glow-subtle {
+    text-shadow: 
+      0 0 4px rgba(255, 255, 255, 0.8),
+      0 0 15px rgba(225, 235, 245, 0.5),
+      0 0 30px rgba(200, 215, 235, 0.3);
+  }
+
+  .silver-glow-intense {
+    text-shadow: 
+      0 0 2px #ffffff,
+      0 0 8px rgba(255, 255, 255, 1),
+      0 0 18px rgba(235, 242, 255, 0.9),
+      0 0 32px rgba(210, 225, 250, 0.75),
+      0 0 55px rgba(190, 210, 240, 0.6),
+      0 0 85px rgba(255, 255, 255, 0.45);
+  }
+
+  /* Analog film noise overlay */
+  .film-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  /* Horizontal CRT / VHS tape scanlines matching image 1 */
+  .crt-scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+
+  .tape-lines {
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 2px,
+      transparent 2px,
+      transparent 4px
+    );
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+body {
+  background-color: #0d0e11;
+  color: #f1f3f7;
+  overflow-x: hidden;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0e11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333842;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4f5666;
+}
