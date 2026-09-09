@@ -1,6 +1,0 @@
-{
-  "name": "Noise Dept. Portfolio",
-  "description": "Portfolio website for creative agency Noise Dept featuring Creations, Services, and Contact.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
