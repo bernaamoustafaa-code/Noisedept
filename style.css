@@ -232,67 +232,153 @@ h1{ margin: 0; }
 
 /* ============================================
    Inner pages — Services / Creations
+   Dark editorial theme, same grain DNA as the
+   landing page but tinted near-black.
    ============================================ */
 .page{
+  --line: rgba(255,255,255,.14);
+  --surface: rgba(255,255,255,.045);
+  --surface-hover: rgba(255,255,255,.08);
+  --text-dim: rgba(245,244,242,.6);
+
+  position: relative;
   min-height: 100vh;
-  background: var(--paper);
-  padding: clamp(6rem, 14vh, 8rem) var(--edge) clamp(4rem, 10vh, 6rem);
+  color: #f5f4f2;
+  background:
+    linear-gradient(180deg, rgba(8,8,9,.88), rgba(8,8,9,.94)),
+    url("hero-bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  padding: clamp(5.5rem, 12vh, 7.5rem) var(--edge) clamp(5rem, 12vh, 7rem);
+}
+
+.page-topbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: clamp(1.5rem, 4vh, 2.25rem);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(2.5rem, 7vh, 4rem);
 }
 
 .page-back{
-  display: inline-block;
-  margin-bottom: clamp(2rem, 6vh, 3.5rem);
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
   font-family: var(--font-body);
-  font-size: .85rem;
-  letter-spacing: .05em;
-  color: var(--ink);
-  opacity: .65;
-  transition: opacity .2s ease;
+  font-weight: 500;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color .2s ease;
 }
 
 .page-back:hover,
-.page-back:focus-visible{ opacity: 1; }
+.page-back:focus-visible{ color: #fff; }
+
+.page-tag{
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.page-hero{
+  max-width: 720px;
+  margin-bottom: clamp(3rem, 8vh, 4.5rem);
+}
 
 .page-title{
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.25rem, 8vw, 4.5rem);
+  font-size: clamp(2.5rem, 8vw, 4.75rem);
   letter-spacing: -0.01em;
+  line-height: 1.02;
+  margin: 0 0 1.1rem;
+}
+
+.page-lede{
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--text-dim);
+  max-width: 58ch;
+  margin: 0;
+}
+
+.page-divider{
+  border: none;
+  border-top: 1px solid var(--line);
   margin: 0 0 clamp(2.5rem, 7vh, 4rem);
 }
 
-/* Services list */
-.service-list{
+/* Icon + label cards — used for Services, and Creations category headers */
+.card-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 640px;
-  border-top: 1px solid rgba(10,10,10,.15);
 }
 
-.service-list li{
+.card-grid > li:last-child:nth-child(odd){
+  grid-column: 1 / -1;
+}
+
+.offer-card{
   display: flex;
-  align-items: baseline;
-  gap: 1.25rem;
-  padding: clamp(1.1rem, 3vh, 1.6rem) 0;
-  border-bottom: 1px solid rgba(10,10,10,.15);
+  align-items: center;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vh, 1.6rem) clamp(1.25rem, 3vw, 1.6rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.offer-card:hover{
+  background: var(--surface-hover);
+  border-color: rgba(255,255,255,.22);
+}
+
+.offer-icon{
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offer-icon svg{
+  width: 1.1rem;
+  height: 1.1rem;
+  stroke: #f5f4f2;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.offer-label{
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(1.1rem, 3vw, 1.6rem);
-  letter-spacing: -0.005em;
-}
-
-.service-list .num{
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: .85rem;
-  opacity: .5;
-  min-width: 2ch;
+  font-size: clamp(.95rem, 1.8vw, 1.15rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  line-height: 1.15;
 }
 
 /* Creations — category sections */
 .creations-section{
-  margin-bottom: clamp(3.5rem, 10vh, 5.5rem);
+  margin-bottom: clamp(3.5rem, 9vh, 5rem);
 }
 
 .creations-section:last-child{
@@ -300,21 +386,36 @@ h1{ margin: 0; }
 }
 
 .creations-heading{
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0 0 1.5rem;
+}
+
+.creations-heading .offer-icon{
+  width: 2rem;
+  height: 2rem;
+}
+
+.creations-heading .offer-icon svg{
+  width: .95rem;
+  height: .95rem;
+}
+
+.creations-heading h2{
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: .85rem;
+  font-size: .8rem;
   letter-spacing: .12em;
   text-transform: uppercase;
-  opacity: .55;
-  margin: 0 0 1.25rem;
-  padding-bottom: .75rem;
-  border-bottom: 1px solid rgba(10,10,10,.15);
+  color: var(--text-dim);
+  margin: 0;
 }
 
 .project-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1.5rem 1.25rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -323,13 +424,19 @@ h1{ margin: 0; }
 .project-card{
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
   letter-spacing: -0.005em;
   padding: 1.5rem 1rem;
-  background: rgba(10,10,10,.04);
-  border: 1px solid rgba(10,10,10,.1);
+  background: var(--surface);
+  border: 1px solid var(--line);
   text-align: center;
   line-height: 1.2;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+.project-card:hover{
+  background: var(--surface-hover);
+  border-color: rgba(255,255,255,.22);
 }
 
 .mockup-grid{
@@ -344,17 +451,17 @@ h1{ margin: 0; }
 .mockup-tile{
   aspect-ratio: 4 / 5;
   background:
-    repeating-linear-gradient(45deg, rgba(10,10,10,.06) 0 2px, transparent 2px 10px),
-    rgba(10,10,10,.03);
-  border: 1px solid rgba(10,10,10,.1);
+    repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 2px, transparent 2px 10px),
+    var(--surface);
+  border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-body);
-  font-size: .75rem;
-  letter-spacing: .05em;
+  font-size: .7rem;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  opacity: .5;
+  color: var(--text-dim);
 }
 
 /* ============================================
@@ -372,5 +479,14 @@ h1{ margin: 0; }
 @media (max-width: 480px){
   .content-row-list{
     gap: 1.25rem 2rem;
+  }
+  .card-grid{
+    grid-template-columns: 1fr;
+  }
+  .card-grid > li:last-child:nth-child(odd){
+    grid-column: auto;
+  }
+  .page-topbar{
+    flex-wrap: wrap;
   }
 }
