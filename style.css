@@ -335,6 +335,22 @@ h1{ margin: 0; }
   margin-right: auto;
 }
 
+/* About Us — stacked prose paragraphs */
+.about-copy{
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  max-width: 640px;
+}
+
+.about-copy p{
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.65;
+  color: var(--text-dim);
+  margin: 0;
+}
+
 /* Contact */
 .contact-list{
   list-style: none;
@@ -475,20 +491,12 @@ h1{ margin: 0; }
   line-height: 1.1;
   color: #f5f4f2;
   text-align: center;
-  text-shadow:
-    0 0 10px rgba(255,255,255,.6),
-    0 0 26px rgba(255,255,255,.38),
-    0 0 52px rgba(255,255,255,.2);
-  transition: text-shadow .25s ease, opacity .25s ease;
+  transition: opacity .2s ease;
 }
 
 .creations-heading:hover,
 .creations-heading:focus-visible{
-  opacity: .85;
-  text-shadow:
-    0 0 14px rgba(255,255,255,.75),
-    0 0 34px rgba(255,255,255,.5),
-    0 0 64px rgba(255,255,255,.28);
+  opacity: .7;
 }
 
 /* Category sub-pages — big centered title above the project grid */
