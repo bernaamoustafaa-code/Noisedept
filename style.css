@@ -547,8 +547,8 @@ h1{ margin: 0; }
   border-radius: 16px;
 }
 
-/* Project hero — first image as a cover, with the project
-   name overlaid directly on the photo */
+/* Project hero — the project's first image, shown as a
+   clean cover photo (no text overlay) */
 .project-hero{
   position: relative;
   max-width: 760px;
@@ -563,27 +563,17 @@ h1{ margin: 0; }
   display: block;
 }
 
-.project-hero::after{
-  content: "";
+/* Visually hidden but present for screen readers / SEO */
+.sr-only{
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.78) 100%);
-  pointer-events: none;
-}
-
-.project-hero-title{
-  position: absolute;
-  left: clamp(1rem, 4vw, 1.75rem);
-  bottom: clamp(1rem, 4vw, 1.75rem);
-  z-index: 1;
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(1.5rem, 5.5vw, 2.75rem);
-  letter-spacing: -0.005em;
-  text-transform: uppercase;
-  color: #fff;
-  line-height: 1.05;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .project-grid{
@@ -654,6 +644,18 @@ h1{ margin: 0; }
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--text-dim);
+}
+
+.mockup-tile a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity .2s ease;
+}
+
+.mockup-tile a:hover,
+.mockup-tile a:focus-visible{
+  opacity: .85;
 }
 
 .mockup-tile img{
