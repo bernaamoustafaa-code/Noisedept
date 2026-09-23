@@ -587,25 +587,51 @@ h1{ margin: 0; }
 }
 
 .project-card{
+  position: relative;
   width: clamp(200px, 26vw, 280px);
   aspect-ratio: 1 / 1;
+  overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
-  letter-spacing: -0.005em;
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: var(--surface);
   border: 1px solid rgba(255,255,255,.16);
-  text-align: center;
-  line-height: 1.2;
   box-shadow:
     0 0 0 1px rgba(255,255,255,.06),
     0 0 22px rgba(255,255,255,.16),
     0 0 48px rgba(255,255,255,.07);
   transition: background-color .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.project-card img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.project-card::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.project-card-label{
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.2rem, 2.8vw, 1.6rem);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  text-align: center;
+  color: #f5f4f2;
 }
 
 .project-card:hover{
@@ -690,4 +716,53 @@ h1{ margin: 0; }
   .page-topbar{
     flex-wrap: wrap;
   }
+}
+
+/* ============================================
+   Lightbox — used by AI Mockups (see main.js)
+   ============================================ */
+.lightbox-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 6vw, 3rem);
+  background: rgba(6,6,7,.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.lightbox-overlay.is-open{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-img{
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(0,0,0,.6);
+}
+
+.lightbox-close{
+  position: absolute;
+  top: clamp(.75rem, 3vw, 1.5rem);
+  right: clamp(.75rem, 3vw, 1.5rem);
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  color: #f5f4f2;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus-visible{
+  background: rgba(255,255,255,.14);
 }
